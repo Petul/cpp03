@@ -6,7 +6,7 @@
 /*   By: pleander <pleander@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 11:03:29 by pleander          #+#    #+#             */
-/*   Updated: 2025/01/07 11:38:45 by pleander         ###   ########.fr       */
+/*   Updated: 2025/01/07 14:19:40 by pleander         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ ClapTrap::ClapTrap(const std::string name)
     : name_(name), hit_points_(10), energy_points_(10), attack_damage_(0)
 {
 	std::cout << "Default constructor of ClapTrap " << this->name_
-	          << "has been called" << std::endl;
+	          << " has been called" << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap& c)
@@ -28,13 +28,13 @@ ClapTrap::ClapTrap(const ClapTrap& c)
       attack_damage_(c.attack_damage_)
 {
 	std::cout << "Copy constructor of ClapTrap " << this->name_
-	          << "has been called" << std::endl;
+	          << " has been called" << std::endl;
 }
 
 ClapTrap& ClapTrap::operator=(const ClapTrap& c)
 {
 	std::cout << "Copy assignment constructor of ClapTrap " << this->name_
-	          << "has been called" << std::endl;
+	          << " has been called" << std::endl;
 
 	if (this == &c)  // Self assignment guard
 	{
@@ -49,8 +49,8 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& c)
 
 ClapTrap::~ClapTrap()
 {
-	std::cout << "ClapTrap " << this->name_ << "has been destroyed"
-	          << std::endl;
+	std::cout << "ClapTrap " << this->name_
+	          << " has been deleted by the destructor" << std::endl;
 }
 
 void ClapTrap::attack(const std::string& target)
@@ -73,9 +73,8 @@ void ClapTrap::attack(const std::string& target)
 
 void ClapTrap::takeDamage(unsigned int amount)
 {
-	if (this->hit_points_ > 0 && this->energy_points_ > 0)
+	if (this->hit_points_ > 0)
 	{
-		this->energy_points_ -= 1;
 		this->hit_points_ =
 		    std::max(this->hit_points_ - static_cast<int>(amount), 0);
 		std::cout << "ClapTrap " << this->name_ << " takes " << amount
