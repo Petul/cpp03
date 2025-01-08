@@ -15,14 +15,31 @@
 #include <iostream>
 
 ClapTrap::ClapTrap()
+    : name_("Default ClapTrap"),
+      hit_points_(10),
+      energy_points_(10),
+      attack_damage_(0)
+
 {
-	ClapTrap("Default ClapTrap");
+	std::cout << "Default constructor of ClapTrap " << this->name_
+	          << " has been called" << std::endl;
 }
 
 ClapTrap::ClapTrap(const std::string name)
     : name_(name), hit_points_(10), energy_points_(10), attack_damage_(0)
 {
-	std::cout << "Default constructor of ClapTrap " << this->name_
+	std::cout << "Name constructor of ClapTrap " << this->name_
+	          << " has been called" << std::endl;
+}
+
+ClapTrap::ClapTrap(const std::string name, int hit_points, int energy_points,
+                   int attack_damage)
+    : name_(name),
+      hit_points_(hit_points),
+      energy_points_(energy_points),
+      attack_damage_(attack_damage)
+{
+	std::cout << "Name constructor of ClapTrap " << this->name_
 	          << " has been called" << std::endl;
 }
 
@@ -80,17 +97,19 @@ void ClapTrap::takeDamage(unsigned int amount)
 {
 	if (this->hit_points_ > 0)
 	{
-		this->hit_points_ =
-		    std::max(this->hit_points_ - static_cast<int>(amount), 0);
+		if (amount > static_cast<unsigned int>(this->hit_points_))
+			this->hit_points_ = 0;
+		else
+		{
+			this->hit_points_ = this->hit_points_ - amount;
+		}
 		std::cout << "ClapTrap " << this->name_ << " takes " << amount
 		          << ", hitpoints of damage. " << "Total hitpoints are now "
 		          << this->hit_points_ << std::endl;
 	}
 	else
 	{
-		std::cout << "ClapTrap " << this->name_
-		          << " is already destroyed or does not have enough energy "
-		             "points to repair itself"
+		std::cout << "ClapTrap " << this->name_ << " is already destroyed."
 		          << std::endl;
 	}
 }

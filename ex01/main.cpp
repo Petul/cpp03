@@ -10,29 +10,22 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
+#include <iostream>
+
+#include "ScavTrap.hpp"
 
 int main(void)
 {
-	ClapTrap t_1 = ClapTrap("trap 1");
-	t_1.attack("Foo");
-	t_1.takeDamage(5);
-	t_1.takeDamage(4);
-	t_1.takeDamage(4);
-	t_1.takeDamage(4);
-	t_1.beRepaired(10);
+	ScavTrap foo = ScavTrap("Foo");
+	foo.guardGate();
+	foo.takeDamage(100);
+	foo.takeDamage(100);
+	foo.guardGate();
 
-	ClapTrap t_2 = ClapTrap("trap 2");
-	t_2.takeDamage(5);
-	t_2.beRepaired(3);
-	t_2.beRepaired(3);
-	t_2.attack("foo");
-	t_2.attack("foo");
-	t_2.attack("foo");
-	t_2.attack("foo");
-	t_2.attack("foo");
-	t_2.attack("foo");
-	t_2.attack("foo");
-	t_2.attack("foo");
-	t_2.attack("foo");
+	std::cout << std::endl;
+	ScavTrap bar = ScavTrap("Bar");
+	bar.beRepaired(10);
+	bar.attack("Baz");
+	bar.takeDamage(10);
+	bar.takeDamage(-10);
 }
