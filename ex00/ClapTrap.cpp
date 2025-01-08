@@ -75,17 +75,19 @@ void ClapTrap::takeDamage(unsigned int amount)
 {
 	if (this->hit_points_ > 0)
 	{
-		this->hit_points_ =
-		    std::max(this->hit_points_ - static_cast<int>(amount), 0);
+		if (amount > static_cast<unsigned int>(this->hit_points_))
+			this->hit_points_ = 0;
+		else
+		{
+			this->hit_points_ = this->hit_points_ - amount;
+		}
 		std::cout << "ClapTrap " << this->name_ << " takes " << amount
 		          << ", hitpoints of damage. " << "Total hitpoints are now "
 		          << this->hit_points_ << std::endl;
 	}
 	else
 	{
-		std::cout << "ClapTrap " << this->name_
-		          << " is already destroyed or does not have enough energy "
-		             "points to repair itself"
+		std::cout << "ClapTrap " << this->name_ << " is already destroyed."
 		          << std::endl;
 	}
 }
