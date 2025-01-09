@@ -19,18 +19,18 @@
 DiamondTrap::DiamondTrap()
     : ClapTrap{"Default DiamondTrap_clap_name"}, name_{"Default DiamondTrap"}
 {
-	this->hit_points_ = FragTrap::hit_points_;
-	this->energy_points_ = ScavTrap::energy_points_;
-	this->attack_damage_ = FragTrap::attack_damage_;
+	this->hit_points_ = FragTrap::default_hit_points_;
+	this->energy_points_ = ScavTrap::default_energy_points_;
+	this->attack_damage_ = FragTrap::default_attack_damage_;
 	std::cout << "Name constructor of DiamondTrap " << this->name_
 	          << " has been called" << std::endl;
 }
 DiamondTrap::DiamondTrap(std::string name)
     : ClapTrap{name + "_clap_name"}, name_{name}
 {
-	this->hit_points_ = FragTrap::hit_points_;
-	this->energy_points_ = ScavTrap::energy_points_;
-	this->attack_damage_ = FragTrap::attack_damage_;
+	this->hit_points_ = FragTrap::default_hit_points_;
+	this->energy_points_ = ScavTrap::default_energy_points_;
+	this->attack_damage_ = FragTrap::default_attack_damage_;
 	std::cout << "Name constructor of DiamondTrap " << this->name_
 	          << " has been called" << std::endl;
 }
@@ -69,6 +69,6 @@ DiamondTrap::~DiamondTrap()
 
 void DiamondTrap::whoAmI()
 {
-	std::cout << "DiamondTrap name: " << this->name_
-	          << " and ClapTrap name: " << ClapTrap::name_ << std::endl;
+	std::cout << "[[whoAmI]]: DiamondTrap name is " << this->name_
+	          << " and ClapTrap name is " << ClapTrap::name_ << std::endl;
 }

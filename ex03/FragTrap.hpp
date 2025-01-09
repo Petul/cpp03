@@ -25,6 +25,11 @@ class FragTrap : virtual public ClapTrap
 	~FragTrap();
 	void attack(const std::string& target);
 	void highFivesGuys();
+
+   protected:
+	static const int default_hit_points_;
+	static const int default_energy_points_;
+	static const int default_attack_damage_;
 };
 
 #endif

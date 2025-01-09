@@ -14,13 +14,23 @@
 
 #include <iostream>
 
-ScavTrap::ScavTrap() : ClapTrap{"Default ScavTrap", 100, 50, 20}
+const int ScavTrap::default_hit_points_{100};
+const int ScavTrap::default_energy_points_{50};
+const int ScavTrap::default_attack_damage_{20};
+
+ScavTrap::ScavTrap()
+    : ClapTrap{"Default ScavTrap", ScavTrap::default_hit_points_,
+               ScavTrap::default_energy_points_,
+               ScavTrap::default_attack_damage_}
 {
 	std::cout << "Default constructor of ScavTrap " << this->name_
 	          << " has been called" << std::endl;
 }
 
-ScavTrap::ScavTrap(std::string name) : ClapTrap{name, 100, 50, 20}
+ScavTrap::ScavTrap(std::string name)
+    : ClapTrap{name, ScavTrap::default_hit_points_,
+               ScavTrap::default_energy_points_,
+               ScavTrap::default_attack_damage_}
 {
 	std::cout << "Name constructor of ScavTrap " << this->name_
 	          << " has been called" << std::endl;

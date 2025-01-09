@@ -14,13 +14,23 @@
 
 #include <iostream>
 
-FragTrap::FragTrap() : ClapTrap{"Default FragTrap", 100, 100, 30}
+const int FragTrap::default_hit_points_ = 100;
+const int FragTrap::default_energy_points_ = 100;
+const int FragTrap::default_attack_damage_ = 30;
+
+FragTrap::FragTrap()
+    : ClapTrap{"Default FragTrap", FragTrap::default_hit_points_,
+               FragTrap::default_energy_points_,
+               FragTrap::default_attack_damage_}
 {
 	std::cout << "Default constructor of FragTrap " << this->name_
 	          << " has been called" << std::endl;
 }
 
-FragTrap::FragTrap(std::string name) : ClapTrap{name, 100, 100, 30}
+FragTrap::FragTrap(std::string name)
+    : ClapTrap{name, FragTrap::default_hit_points_,
+               FragTrap::default_energy_points_,
+               FragTrap::default_attack_damage_}
 {
 	std::cout << "Name constructor of FragTrap " << this->name_
 	          << " has been called" << std::endl;
