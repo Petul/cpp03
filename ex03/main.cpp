@@ -17,4 +17,5 @@ int main(void)
 	DiamondTrap foo{DiamondTrap("foo")};
 	foo.whoAmI();
 	foo.attack("Target");
+	foo.highFivesGuys();
 }
